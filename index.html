@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Quiz</title>
+</head>
+<body>
+
+    <div class="start-btn">
+        <button>Start Quiz</button>
+    </div>
+    <div class="info-box inactive">
+        <div class="info-title">
+            <span>Some Rules of this Quiz</span>
+        </div>
+        <div class="info-list">
+            <div class="info">1. You will have only <span>15 seconds</span> per question</div>
+            <div class="info">2. Once you select your answet, you can't reselect.</div>
+            <div class="info">3. You can't select any option once time goes off.</div>
+            <div class="info">4. You cant't exit from the quiz while you're playing.</div>
+            <div class="info">5. You'll get points on the basis of your correct answers.</div>
+        </div>
+        <div class="button">
+            <button>Exit Quiz</button>
+            <button>Continue</button>
+        </div>
+    </div>
+    
+
+    <div class="quiz-card">
+        <div class="quiz-card-header">
+            <div>Quiz Application</div>
+            <div>Time left <span>15</span></div>
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress"></div>
+        </div>
+        <div class="quiz-card-body">
+            <div class="quiz-question">
+                1. Who discovered Mungo Park?
+            </div>
+            <div class="quiz-option">Option A
+                <img src="images/icons8-tick.svg" alt="correct">
+                <img src="images/icons8-x-32.png" alt="incorrect">
+            </div>
+            <div class="quiz-option">Option B
+                <img src="images/icons8-tick.svg" alt="">
+                <img src="images/icons8-x-32.png" alt="">
+            </div>
+            <div class="quiz-option">Option C
+                <img src="images/icons8-tick.svg" alt="">
+                <img src="images/icons8-x-32.png" alt="">
+            </div>
+            <div class="quiz-option">Option D
+                <img src="images/icons8-tick.svg" alt="">
+                <img src="images/icons8-x-32.png" alt="">
+            </div>
+        </div>
+        <div class="quiz-card-footer">
+            <div><span>1</span> of <span>50</span> Questions </div>
+            <button>Next</button>
+        </div>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
