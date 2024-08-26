@@ -9,7 +9,7 @@
 <body>
 
     <div class="start-btn">
-        <button>Start Quiz</button>
+        <button id="btn-1">Start Quiz</button>
     </div>
     <div class="info-box inactive">
         <div class="info-title">
@@ -23,16 +23,16 @@
             <div class="info">5. You'll get points on the basis of your correct answers.</div>
         </div>
         <div class="button">
-            <button>Exit Quiz</button>
-            <button>Continue</button>
+            <button id="exit-btn">Exit Quiz</button>
+            <button id="cont-btn">Continue</button>
         </div>
     </div>
     
 
-    <div class="quiz-card">
+    <div class="quiz-card quiz-card-inactive">
         <div class="quiz-card-header">
             <div>Quiz Application</div>
-            <div>Time left <span>15</span></div>
+            <div class="time-left">Time left <span id="timer">15</span></div>
         </div>
         <div class="progress-bar-container">
             <div class="progress"></div>
@@ -41,28 +41,35 @@
             <div class="quiz-question">
                 1. Who discovered Mungo Park?
             </div>
-            <div class="quiz-option">Option A
-                <img src="images/icons8-tick.svg" alt="correct">
-                <img src="images/icons8-x-32.png" alt="incorrect">
+            <div class="quiz-option" data-correct="false">Option A
+                
+                <img src="images/icons8-tick.svg" alt="correct" class="correct-icon">
+                <img src="images/icons8-x-32.png" alt="incorrect" class="wrong-icon">
             </div>
-            <div class="quiz-option">Option B
-                <img src="images/icons8-tick.svg" alt="">
-                <img src="images/icons8-x-32.png" alt="">
+            <div class="quiz-option" data-correct="false">Option B
+                <div class="icon">
+                    <img src="images/icons8-tick.svg" alt="" class="correct-icon">
+                    <img src="images/icons8-x-32.png" alt="" class="wrong-icon">
+                </div>
             </div>
-            <div class="quiz-option">Option C
-                <img src="images/icons8-tick.svg" alt="">
-                <img src="images/icons8-x-32.png" alt="">
+            <div class="quiz-option" data-correct="false">Option C
+                <div class="icon">
+                    <img src="images/icons8-tick.svg" alt="" class="correct-icon">
+                    <img src="images/icons8-x-32.png" alt="" class="wrong-icon">
+                </div>
             </div>
-            <div class="quiz-option">Option D
-                <img src="images/icons8-tick.svg" alt="">
-                <img src="images/icons8-x-32.png" alt="">
+            <div class="quiz-option" data-correct="false">Option D
+                <div class="icon">
+                    <img src="images/icons8-tick.svg" alt="" class="correct-icon">
+                    <img src="images/icons8-x-32.png" alt="" class="wrong-icon">
+                </div>
             </div>
         </div>
         <div class="quiz-card-footer">
-            <div><span>1</span> of <span>50</span> Questions </div>
-            <button>Next</button>
+            <div><span id="page-number">1</span> of <span id="total-number">50</span> Questions </div>
+            <button id="quiz-card-footer-btn">Next</button>
         </div>
     </div>
-    <script type="module" src="app.js"></script>
+    <script  src="app.js"></script>
 </body>
 </html>

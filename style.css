@@ -96,6 +96,8 @@ body{
     margin-bottom: 1rem;
     border-radius: 5px;
     width: 95%;
+    display: flex;
+    align-items: center;
 }
 .quiz-option:hover{
     background-color: #5697dd;
@@ -116,4 +118,36 @@ body{
     background-color: #007bff; 
     cursor: pointer;  
     border: 1px solid transparent;
+}
+.quiz-option .icon{
+    margin-left: auto;
+}
+.correct-icon, .wrong-icon{
+    display: inline;
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+}
+.quiz-option.correct{
+    border: 1px solid green;
+    background-color: rgb(167, 238, 167);
+    color: green;
+}
+.quiz-option.incorrect{
+    border: 1px solid red;
+    background-color: rgb(233, 149, 149);
+    color: red;
+}
+.quiz-card-inactive{
+    display: none;
+}
+.time-left{
+    background-color: #76b0ee;
+    padding: .5rem 1rem;
+}
+#timer{
+    background-color: rgb(1, 1, 39);
+    color: white;
+    padding: .5rem 1rem;
+    border-radius: 5px;
 }
