@@ -1,5 +1,3 @@
-//import { data } from "./data";
-
 const startBtn = document.querySelector(".start-btn");
 const infoBox = document.querySelector(".info-box");
 const exitBtn = document.querySelector("#exit-btn");
@@ -10,6 +8,8 @@ const quizQuestion = document.querySelector(".quiz-question");
 const nextBtn = document.querySelector("#quiz-card-footer-btn");
 const tickIcon = document.querySelector(".correct-icon");
 const xIcon = document.querySelector(".wrong-icon");
+const pageNumber = document.querySelector("#page-number");
+const progressBar = document.querySelector(".progress");
 startBtn.addEventListener("click", function(){
     startBtn.style.display = "none";
     infoBox.classList.remove("inactive");
@@ -25,6 +25,8 @@ contBtn.addEventListener("click", function(){
     quizCard.classList.remove("quiz-card-inactive");
 });
 
+let numberPassed = 0;
+let numberMissed = 0;
 
 const data = [
     {
@@ -332,18 +334,34 @@ let page = 0;
 const displayQuestion =() =>{
     quizOptions.forEach((quiz, index)=>{
         quiz.innerHTML = `<p>${data[page].quizOptions[index]}</p>`;
+        quiz.classList.remove("correct", "incorrect");
+        quiz.disabled = false;
     })
     quizQuestion.textContent = data[page].quizQuestion;
+    let optionClicked = false;
     quizOptions.forEach((quiz, index)=>{
         
         quiz.addEventListener("click", function(){
+            if (optionClicked) {
+                return;
+            }
+
+            optionClicked = true;
             if (quiz.children[0].textContent == data[page - 1].quizAnswer){
+                numberPassed++
                 quiz.classList.add("correct");
                 quiz.appendChild(tickIcon);
+                quiz.disabled = true;
             }else{
+                numberMissed++;
                 quiz.classList.add("incorrect");
-                quiz.appendChild(xIcon)
+                quiz.appendChild(xIcon);
+                quiz.disabled = true;
             }
+
+            console.log(numberPassed);
+            console.log("----=");
+            console.log(numberMissed);
         })
     })
     page++;
@@ -352,4 +370,9 @@ displayQuestion();
 
 nextBtn.addEventListener("click", function(){
     displayQuestion();
+    pageNumber.textContent = page;
 })
+
+
+
+
