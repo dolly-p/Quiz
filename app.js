@@ -10,6 +10,14 @@ const tickIcon = document.querySelector(".correct-icon");
 const xIcon = document.querySelector(".wrong-icon");
 const pageNumber = document.querySelector("#page-number");
 const progressBar = document.querySelector(".progress");
+const timer = document.querySelector("#timer");
+const scoreCard = document.querySelector(".score-card");
+const score = document.querySelectorAll(".score");
+const miss = document.querySelector(".miss");
+let countdownDuration = 15;
+progressBar.style.width = "0%";
+let optionClicked = false;
+
 startBtn.addEventListener("click", function(){
     startBtn.style.display = "none";
     infoBox.classList.remove("inactive");
@@ -19,10 +27,32 @@ exitBtn.addEventListener("click", function(){
     infoBox.classList.add("inactive");
     startBtn.style.display = "block";
 });
+const updateTimer = () =>{
+    let multiplier = 0;
+    countdownDuration =15;
+    countdownInterval = setInterval(() => {
+        let baseNum = 0.445;
+        timer.textContent = countdownDuration--;
+        const percentage = 15 * (baseNum * multiplier);
+        console.log(percentage);
+        multiplier++
+        console.log(multiplier);
+        progressBar.style.transition = "width 1s linear";
+        progressBar.style.width = `${percentage}%`;
+        if (countdownDuration< 0 || optionClicked){
+            clearInterval(countdownInterval);
+            optionClicked = true;
 
+        }
+        
+    }, 1000);
+    
+    
+}
 contBtn.addEventListener("click", function(){
     infoBox.classList.add("inactive");
-    quizCard.classList.remove("quiz-card-inactive");
+    quizCard.classList.remove("quiz-card-inactive");    
+    updateTimer();
 });
 
 let numberPassed = 0;
@@ -331,32 +361,34 @@ const data = [
     }
 ];
 let page = 0;
+
 const displayQuestion =() =>{
+    optionClicked = false;
+    
     quizOptions.forEach((quiz, index)=>{
         quiz.innerHTML = `<p>${data[page].quizOptions[index]}</p>`;
         quiz.classList.remove("correct", "incorrect");
-        quiz.disabled = false;
+        
     })
     quizQuestion.textContent = data[page].quizQuestion;
-    let optionClicked = false;
+    
     quizOptions.forEach((quiz, index)=>{
         
         quiz.addEventListener("click", function(){
             if (optionClicked) {
                 return;
             }
-
-            optionClicked = true;
+            clearInterval(countdownInterval);
             if (quiz.children[0].textContent == data[page - 1].quizAnswer){
                 numberPassed++
                 quiz.classList.add("correct");
                 quiz.appendChild(tickIcon);
-                quiz.disabled = true;
+                optionClicked = true;
             }else{
                 numberMissed++;
                 quiz.classList.add("incorrect");
                 quiz.appendChild(xIcon);
-                quiz.disabled = true;
+                optionClicked = true;
             }
 
             console.log(numberPassed);
@@ -365,12 +397,32 @@ const displayQuestion =() =>{
         })
     })
     page++;
+    
 }
 displayQuestion();
+const displayRightAnswer = () =>{
+
+}
 
 nextBtn.addEventListener("click", function(){
+    progressBar.style.width = "0%";
+    progressBar.style.transition = "none";
+    clearInterval(countdownInterval)
     displayQuestion();
     pageNumber.textContent = page;
+    updateTimer();
+    if (optionClicked == false){
+        numberMissed++;
+    }
+    if (page == 50){
+        quizCard.classList.add("quiz-card-inactive");
+        nextBtn.textContent = "Finish";
+        scoreCard.classList.remove("active-score-card");
+        score.forEach((score)=>{
+            score.textContent = numberPassed;
+        })
+        miss.textContent = numberMissed;
+    }
 })
 
 

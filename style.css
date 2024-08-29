@@ -23,7 +23,7 @@ body{
     background-color: #fff; 
     cursor: pointer;  
 }
-.info-box, .quiz-card{
+.info-box, .quiz-card, .score-card{
     margin: auto;
     margin-top: 10vh;
     width: 540px;
@@ -77,16 +77,16 @@ body{
 } 
 .progress-bar-container {
     width: 100%;
-    height: 2px; /* Height of the progress bar */
-    background-color: #ddd; /* Background color of the progress bar container */
+    height: 2px; 
+    background-color: #ddd; 
     margin-bottom: 20px;
     
 }
 .progress {
     height: 100%;
-    width: 10%; /* Start with a width of 0% */
-    background-color: blue; /* Color of the progress bar */
-    transition: width 0.1s linear;
+    width: 0%; 
+    background-color: blue; 
+    transition: width 1s linear;
 }
 
 .quiz-option{
@@ -150,4 +150,29 @@ body{
     color: white;
     padding: .5rem 1rem;
     border-radius: 5px;
+}
+
+.score-card{
+    padding: 1rem;
+    border-radius: 5px;
+}
+.score-card img{
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+.score-line{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.score-card p{
+    padding-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.active-score-card{
+    display: none;
 }
